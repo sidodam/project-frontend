@@ -7,7 +7,7 @@ import Loader from '../componenets/Loader'
 function ImageWithTitle() {
 
 
-  const { data, loading, error } = useFetch("http://localhost:8800/api/hotels/countByType") as { data: { type: string, count: number }[], loading: boolean, error: boolean }
+  const { data, loading, error } = useFetch("https://weak-lime-sea-urchin-cap.cyclic.app/api/hotels/countByType") as { data: { type: string, count: number }[], loading: boolean, error: boolean }
 
 
   const images = [

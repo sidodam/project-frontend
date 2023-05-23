@@ -16,7 +16,7 @@ interface ReserveProps {
 
 function Reserve({ setOpen, hotelId }: ReserveProps) {
     const { data, loading, error } = useFetch(
-        `http://localhost:8800/api/hotels/room/${hotelId}`,
+        `https://weak-lime-sea-urchin-cap.cyclic.app/api/hotels/room/${hotelId}`,
     )
 
     const [selectedRooms, setSelectedRooms] = useState([])
@@ -69,7 +69,7 @@ function Reserve({ setOpen, hotelId }: ReserveProps) {
             await Promise.all(
                 selectedRooms.map((roomId) => {
                     const res = axios.put(
-                        `http://localhost:8800/api/rooms/availibility/${roomId}`,
+                        `https://weak-lime-sea-urchin-cap.cyclic.app/api/rooms/availibility/${roomId}`,
                         {
                             dates: uniq,
                         },

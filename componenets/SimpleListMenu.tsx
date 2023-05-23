@@ -47,7 +47,7 @@ export default function SimpleListMenu({
       setCorrect(true)
 
       try {
-        const res = await axios.delete(`http://localhost:8800/api/users/${id}`)
+        const res = await axios.delete(`https://weak-lime-sea-urchin-cap.cyclic.app/api/users/${id}`)
 
         console.error(res)
         localStorage.removeItem('user')

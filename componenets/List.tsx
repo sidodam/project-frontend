@@ -30,7 +30,7 @@ function List({ destination, startDate, endDate, adult, room }: ListProps) {
   const ref = useRef(null)
 
   const { data, loading, error, reFetch } = useFetch(
-    `http://localhost:8800/api/hotels?city=${dest}&min=${min || 0}&max=${
+    `https://weak-lime-sea-urchin-cap.cyclic.app/api/hotels?city=${dest}&min=${min || 0}&max=${
       max || 9999
     }`,
   ) as { data: any[]; loading: boolean; error: boolean; reFetch: () => void }

@@ -75,7 +75,7 @@ const SignupForm = ({ FormClassName }: FormClassNameProps) => {
             console.log(values)
             try {
               const res = await axios.post(
-                'http://localhost:8800/api/auth/register',
+                'https://weak-lime-sea-urchin-cap.cyclic.app/api/auth/register',
                 values,
               )
               ref.current.innerHTML = ''

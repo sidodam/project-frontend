@@ -25,7 +25,7 @@ interface HotelProps {
 
 function Hotel({ id, daysBetween, room = 1 }: HotelProps) {
   const { data, loading, error } = useFetch(
-    `http://localhost:8800/api/hotels/find/${id}`,
+    `https://weak-lime-sea-urchin-cap.cyclic.app/api/hotels/find/${id}`,
   ) as { data: any; loading: boolean; error: boolean }
 
   const { user } = useContext(AuthContext) as any

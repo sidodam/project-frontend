@@ -8,7 +8,7 @@ interface FeaturedProps {
 function Featured({ className }: FeaturedProps) {
   const tablet = useMediaQuery('(max-width: 900px)')
   const { data, loading, error } = useFetch(
-    'http://localhost:8800/api/hotels/countByCity?cities=berlin,japan,france',
+    'https://weak-lime-sea-urchin-cap.cyclic.app/api/hotels/countByCity?cities=berlin,japan,france',
   )
 
   return (

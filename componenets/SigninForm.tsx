@@ -42,7 +42,7 @@ const Login = () => {
           dispatch({ type: 'LOGIN_START' })
           try {
             const res = await axios.post(
-              'http://localhost:8800/api/auth/login',
+              'https://weak-lime-sea-urchin-cap.cyclic.app/api/auth/login',
               values,
             )
             dispatch({ type: 'LOGIN_SUCCESS', payload: res.data.details })

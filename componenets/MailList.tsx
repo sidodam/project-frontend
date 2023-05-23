@@ -19,7 +19,7 @@ function MailList() {
     if (validateEmail(mail)) {
       try {
         setWaiting(true)
-        const res = await axios.post('http://localhost:8800/api/send', {
+        const res = await axios.post('https://weak-lime-sea-urchin-cap.cyclic.app/api/send', {
           target: mail,
         })
         setSent(true)

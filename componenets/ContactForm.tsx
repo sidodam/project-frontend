@@ -78,7 +78,7 @@ const ContactForm = ({ FormClassName }: FormClassNameProps) => {
             console.log(values)
             try {
               const res = await axios.post(
-                'http://localhost:8800/api/contactus',
+                'https://weak-lime-sea-urchin-cap.cyclic.app/api/contactus',
                 values,
               )
               console.log(res)

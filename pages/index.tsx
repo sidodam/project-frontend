@@ -16,11 +16,11 @@ import { useRouter } from 'next/router'
 
 const Home: NextPage = () => {
   const { data, loading, error } = useFetch(
-    'http://localhost:8800/api/hotels?featured=true',
+    'https://weak-lime-sea-urchin-cap.cyclic.app/api/hotels?featured=true',
   ) as { data: any[]; loading: boolean; error: boolean }
-  const { data: datos } = useFetch('http://localhost:8800/api/contactus')
+  const { data: datos } = useFetch('https://weak-lime-sea-urchin-cap.cyclic.app/api/contactus')
 
-  const { data: nextDest } = useFetch('http://localhost:8800/api/hotels')
+  const { data: nextDest } = useFetch('https://weak-lime-sea-urchin-cap.cyclic.app/api/hotels')
 
   const router = useRouter()
 
