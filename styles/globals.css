@@ -1,0 +1,403 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  
+   
+}
+
+@layer utilities {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  
+}
+
+
+ h1 {
+  font: bold 60px "Open Sans", sans-serif;
+
+}
+
+
+
+.brbr{
+  animation: slide-in 0.5s forwards; 
+}
+
+.brbr2{
+  animation: slide-out 0.5s backwards; 
+}
+    
+@keyframes slide-in {
+  from {
+    transform: translateX(200%);  
+  }
+  to { transform: translateX(100%); }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateX(100%);  
+  }
+  to { transform: translateX(200%); }
+}
+
+
+
+
+.white-logo{
+
+  filter: invert(100%) sepia(31%) saturate(46%) hue-rotate(228deg) brightness(111%) contrast(94%);
+}
+
+
+
+/*
+
+width 40%
+@keyframes slide-in {
+  from {
+    transform: translateX(250%);  
+  }
+  to { transform: translateX(170%); }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateX(170%);  
+  }
+  to { transform: translateX(250%); }
+} 
+
+*/
+.box-shadow{
+
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+
+.slider-wrapper{
+
+border-radius: 1rem;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+		transform: translateX(1.5rem);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+.fadein {
+	animation: 500ms fadeIn ease-in-out;
+}
+
+textarea:focus, input:focus{
+  outline: none;
+}
+
+.top-rounded{
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+button:disabled{
+  cursor: not-allowed;
+}
+
+
+.rdrCalendarWrapper  {
+  z-index: 999 ;
+}
+
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+
+}
+
+
+.mantine-Header-root{
+
+   background-color: white !important;
+}
+
+
+.reserve {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.418);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.rContainer {
+  background-color: white;
+  padding: 20px;
+  position: relative;
+}
+
+.rClose {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  cursor: pointer;
+  
+}
+
+.rItem {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  padding: 20px;
+}
+
+.rInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.rTitle {
+  font-weight: 500;
+}
+
+.rDesc {
+  font-weight: 300;
+}
+
+.rMax {
+  font-size: 12px;
+}
+
+.rPrice {
+  font-weight: 500;
+}
+
+.rSelectRooms{
+
+  font-size: 8px;
+  color: gray;
+}
+
+
+
+.rButton {
+  border: none;
+  padding: 10px 20px;
+  background-color: #0071c2;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+
+.sent {
+  flex-direction: row-reverse;
+}
+
+.sent p {
+  color: white;
+  background: #0b93f6;
+  align-self: flex-end;
+}
+.received p {
+  background: #e5e5ea;
+  color: black;
+}
+
+.header-signout{
+
+  background-color: #181717;
+  height: 10vh;
+  min-height: 50px;
+  color: white;
+  position: fixed;
+  width: 100%;
+  max-width: 728px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 99;
+  padding: 10px;
+  box-sizing: border-box;
+
+
+}
+
+.app2{
+
+  text-align: center;
+  max-width: 728px;
+  margin: 0 auto;
+
+}
+
+.app2 header {
+  background-color: #181717;
+  height: 10vh;
+  min-height: 50px;
+  color: white;
+
+  width: 100%;
+  max-width: 728px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 99;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.app2 section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: rgb(40, 37, 53);
+}
+
+
+
+.meany{
+  padding: 10px;
+  height: 80vh;
+  margin: 10vh 0 10vh;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column
+
+
+}
+
+.meany::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+.meany::-webkit-scrollbar-track {
+  background: #1e1e24;
+}
+
+.meany::-webkit-scrollbar-thumb {
+  background: #6649b8;
+}
+
+.formy{
+
+  height: 10vh;
+  position: fixed;
+  bottom: 0;
+  background-color: rgb(24, 23, 23);
+  width: 100%;
+  max-width: 728px;
+  display: flex;
+  font-size: 1.5rem;
+}
+
+
+.formy button {
+
+  background-color: rgb(56, 56, 143);
+}
+
+.inputty{
+
+  line-height: 1.5;
+  width: 100%;
+  font-size: 1.5rem;
+  background: rgb(58, 58, 58);
+  color: white;
+  outline: none;
+  border: none;
+  padding: 0 10px;
+}
+
+
+.btn{
+  background-color: #282c34; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 1.25rem;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.sign-in{
+  color: #282c34;
+  background: white;
+  max-width: 400px;
+  margin: 0 auto;
+
+}
+
+
+.para{
+
+  max-width: 500px;
+  margin-bottom: 12px;
+  line-height: 24px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  position: relative;
+  color: white;
+  text-align: center;
+}
+
+
+
+
+.sent {
+  flex-direction: row-reverse;
+}
+
+.sent p {
+  color: white;
+  background: #0b93f6;
+  align-self: flex-end;
+}
+.received p {
+  background: #e5e5ea;
+  color: black;
+}
