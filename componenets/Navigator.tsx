@@ -114,11 +114,7 @@ export default function Navigator({
                 <a href="#">Contact us</a>
               </div>
 
-              <div className=" flex items-center justify-center gap-2 text-black font-semibold ">
-                <BsFillChatDotsFill />
-                <a href="/chatPreface">SpainTalk</a>
-                <sub className="text[50%] font-bold italic  ">Beta</sub>
-              </div>
+           
             </div>
           </Navbar>
         }
