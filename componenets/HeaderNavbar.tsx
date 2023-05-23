@@ -15,7 +15,6 @@ import { GoSignOut } from 'react-icons/go'
 import Image from 'next/image'
 import { useMediaQuery } from '@mantine/hooks'
 import HeaderSearchBar from './HeaderSearchBar'
-import { BsFillChatDotsFill } from 'react-icons/bs'
 import SimpleListMenu from './SimpleListMenu'
 export default function HeaderNavbar() {
   const [opened, setOpened] = useState(false)
@@ -106,10 +105,7 @@ export default function HeaderNavbar() {
 
          
 
-              {/* <div className=" flex items-center justify-center gap-2 text-black font-semibold ">
-                <BsFillChatDotsFill />
-                <a href="/admin">Admin Panel</a>
-              </div> */}
+            
             </div>
           </Navbar>
         }
@@ -161,14 +157,7 @@ export default function HeaderNavbar() {
                       </a>
                     </li>
 
-                    <li className="hover:text-[#4f47ea] transition-all  ">
-                      <a href="/chatPreface" className=" cursor-pointer">
-                        SpainTalk
-                      </a>
-                      <sub className="text[50%] font-semibold italic ml-1 cursor-pointer">
-                        Beta
-                      </sub>
-                    </li>
+                 
 
                     <div className="flex gap-4 items-center">
                       {user ? (

@@ -20,7 +20,6 @@ import { AuthContext } from '../componenets/AuthContext'
 import { useContext } from 'react'
 import { useMediaQuery } from '@mantine/hooks'
 import { GoSignOut } from 'react-icons/go'
-import { BsFillChatDotsFill } from 'react-icons/bs'
 interface NavigatorProps {
   NavigatorHeader: React.ReactNode
   navigatorClassName?: string
@@ -165,14 +164,7 @@ export default function Navigator({
                         Contact us
                       </a>
                     </li>
-                    <li className="hover:text-[#4f47ea] transition-all  ">
-                      <a href="/chatPreface" className=" cursor-pointer">
-                        SpainTalk
-                      </a>
-                      <sub className="text[50%] font-semibold italic ml-1">
-                        Beta
-                      </sub>
-                    </li>
+                 
 
                     <div className="flex items-center gap-4">
                       {user ? (
