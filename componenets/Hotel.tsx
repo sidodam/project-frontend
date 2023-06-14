@@ -1,53 +1,53 @@
-import React from 'react'
-import { MdPlace } from 'react-icons/md'
-import Navigator from './Navigator'
-import ImageAndText from './ImageAndText'
+import React from "react";
+import { MdPlace } from "react-icons/md";
+import Navigator from "./Navigator";
+import Reserve from "../componenets/Reserve";
+import Footer from "./Footer";
+import { useState } from "react";
 
-import Reserve from '../componenets/Reserve'
-import Footer from './Footer'
-import { useState } from 'react'
-
-import { AiOutlineArrowLeft } from 'react-icons/ai'
-import { AiOutlineArrowRight } from 'react-icons/ai'
-import { AiOutlineCloseCircle } from 'react-icons/ai'
-import { DynamicImage } from '../componenets/DynamicImage'
-import useFetch from './hooks/useFetch'
-import Loader from '../componenets/Loader'
-import { AuthContext } from '../componenets/AuthContext'
-import { useContext } from 'react'
-import { useRouter } from 'next/router'
+import { AiOutlineArrowLeft } from "react-icons/ai";
+import { AiOutlineArrowRight } from "react-icons/ai";
+import { AiOutlineCloseCircle } from "react-icons/ai";
+import { DynamicImage } from "../componenets/DynamicImage";
+import useFetch from "./hooks/useFetch";
+import Loader from "../componenets/Loader";
+import { AuthContext } from "../componenets/AuthContext";
+import { useContext } from "react";
+import { useRouter } from "next/router";
 
 interface HotelProps {
-  id: string | string[] | undefined
-  daysBetween: number
-  room: number
+  id: string | string[] | undefined;
+  daysBetween: number;
+  room: number;
 }
 
 function Hotel({ id, daysBetween, room = 1 }: HotelProps) {
-  const { data, loading, error } = useFetch(
-    `https://weak-lime-sea-urchin-cap.cyclic.app/api/hotels/find/${id}`,
-  ) as { data: any; loading: boolean; error: boolean }
+  const { data, loading, error } = useFetch(`https://weak-lime-sea-urchin-cap.cyclic.app/api/hotels/find/${id}`) as {
+    data: any;
+    loading: boolean;
+    error: boolean;
+  };
 
-  const { user } = useContext(AuthContext) as any
+  const { user } = useContext(AuthContext) as any;
 
-  const router = useRouter()
+  const router = useRouter();
 
-  const [slideNumber, setSlideNumber] = useState(0)
-  const [open, setOpen] = useState(false)
-  const [openModal, setOpenModal] = useState(false)
+  const [slideNumber, setSlideNumber] = useState(0);
+  const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   // handle click if user exists
 
   const handleClick = () => {
     if (user) {
-      setOpenModal(true)
+      setOpenModal(true);
     } else {
-      router.push('/signInPage')
+      router.push("/signInPage");
     }
-  }
+  };
 
   function validNights(n: any) {
-    return !isNaN(parseFloat(n)) && n > 0
+    return !isNaN(parseFloat(n)) && n > 0;
   }
 
   return (
@@ -97,8 +97,7 @@ function Hotel({ id, daysBetween, room = 1 }: HotelProps) {
                   </div>
 
                   <div className="text-green-600 font-semibold">
-                    Book a stay over {data.cheapest}€ ar the properety and get a
-                    free airport taxi
+                    Book a stay over {data.cheapest}€ at the properety and get a free airport taxi
                   </div>
                 </div>
                 <div className="flex mx-5 flex-col gap-2 justify-center">
@@ -110,9 +109,7 @@ function Hotel({ id, daysBetween, room = 1 }: HotelProps) {
                         {/* <img src={photos[slideNumber]?.src} alt="" className=' w-full' /> */}
                         asdsa
                       </div>
-                      <DynamicImage
-                        src={data.photos[slideNumber]}
-                      ></DynamicImage>
+                      <DynamicImage src={data.photos[slideNumber]}></DynamicImage>
                       <AiOutlineArrowRight></AiOutlineArrowRight>
                     </div>
                   )}
@@ -138,33 +135,20 @@ function Hotel({ id, daysBetween, room = 1 }: HotelProps) {
                               Perfect for a {daysBetween}-night stay!
                             </p>
                             <span>
-                              Located in the real heart of Krakow, this property
-                              has an excellent location score of 9.8!
+                              Located in the real heart of Krakow, this property has an excellent location score of 9.8!
                             </span>
                             <h2 className="text-3xl">
-                              <b>
-                                €{' '}
-                                {(
-                                  Number(data.cheapest) *
-                                  Number(daysBetween) *
-                                  Number(room)
-                                ).toString()}
-                              </b>{' '}
-                              ({daysBetween} nights)
+                              <b>€ {(Number(data.cheapest) * Number(daysBetween) * Number(room)).toString()}</b> (
+                              {daysBetween} nights)
                             </h2>
-                            <button
-                              onClick={handleClick}
-                              className="bg-blue-700 m-2 p-2 rounded-md "
-                            >
+                            <button onClick={handleClick} className="bg-blue-700 m-2 p-2 rounded-md ">
                               Reserve or Book Now!
                             </button>
                           </div>
                         </>
                       ) : (
                         <>
-                          <p className="font-bold text-red-600 self-center">
-                            Select a valid date before booking
-                          </p>
+                          <p className="font-bold text-red-600 self-center">Select a valid date before booking</p>
                         </>
                       )}
                     </div>
@@ -180,7 +164,7 @@ function Hotel({ id, daysBetween, room = 1 }: HotelProps) {
         }
       />
     </div>
-  )
+  );
 }
 
-export default Hotel
+export default Hotel;

@@ -1,33 +1,30 @@
 // @ts-nocheck
-import axios from 'axios'
-import { useContext, useEffect } from 'react'
+import axios from "axios";
+import { useContext, useEffect } from "react";
 
-import { AuthContext } from '../componenets/AuthContext'
-import { useRouter } from 'next/router'
-import * as yup from 'yup'
-import { Formik, Field, Form } from 'formik'
+import { AuthContext } from "../componenets/AuthContext";
+import { useRouter } from "next/router";
+import * as yup from "yup";
+import { Formik, Field, Form } from "formik";
 
 let SignupSchema = yup.object().shape({
-  username: yup.string().required('This field is required.'),
+  username: yup.string().required("This field is required."),
 
-  password: yup
-    .string()
-    .required('No password provided.')
-    .min(5, 'Password is too short - should be 5 chars minimum.'),
-})
+  password: yup.string().required("No password provided.").min(5, "Password is too short - should be 5 chars minimum."),
+});
 
 const Login = () => {
-  const { loading, error, dispatch } = useContext(AuthContext)
-  const router = useRouter()
+  const { loading, error, dispatch } = useContext(AuthContext);
+  const router = useRouter();
 
   const {
     query: { username, password },
-  } = router
+  } = router;
 
   const props = {
     username,
     password,
-  }
+  };
 
   return (
     <>
@@ -39,17 +36,14 @@ const Login = () => {
         }}
         validationSchema={SignupSchema}
         onSubmit={async (values) => {
-          dispatch({ type: 'LOGIN_START' })
+          dispatch({ type: "LOGIN_START" });
           try {
-            const res = await axios.post(
-              'https://weak-lime-sea-urchin-cap.cyclic.app/api/auth/login',
-              values,
-            )
-            dispatch({ type: 'LOGIN_SUCCESS', payload: res.data.details })
+            const res = await axios.post("https://weak-lime-sea-urchin-cap.cyclic.app/api/auth/login", values);
+            dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
 
-            router.push('/')
+            router.push("/");
           } catch (err) {
-            dispatch({ type: 'LOGIN_FAILURE', payload: err.response.data })
+            dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
           }
         }}
       >
@@ -66,9 +60,7 @@ const Login = () => {
           focus:border-blue-600 focus:outline-none"
                 placeholder="Username"
               />
-              {errors.username && touched.username ? (
-                <div className="text-red-600">{errors.username}</div>
-              ) : null}
+              {errors.username && touched.username ? <div className="text-red-600">{errors.username}</div> : null}
             </div>
 
             <div>
@@ -83,9 +75,7 @@ const Login = () => {
         focus:border-blue-600 focus:outline-none"
                 placeholder="Password"
               />
-              {errors.password && touched.password ? (
-                <div className="text-red-600">{errors.password}</div>
-              ) : null}
+              {errors.password && touched.password ? <div className="text-red-600">{errors.password}</div> : null}
             </div>
 
             <button
@@ -102,7 +92,7 @@ const Login = () => {
                 href="/signUpPage"
                 className="text-red-600 hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out"
               >
-                {' '}
+                {" "}
                 Register
               </a>
             </p>
@@ -110,7 +100,7 @@ const Login = () => {
         )}
       </Formik>
     </>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

@@ -1,13 +1,13 @@
-import React from 'react'
-import Image from 'next/image'
-import { FiFacebook } from 'react-icons/fi'
-import { FiTwitter } from 'react-icons/fi'
-import { FiInstagram } from 'react-icons/fi'
+import React from "react";
+import Image from "next/image";
+import { FiFacebook } from "react-icons/fi";
+import { FiTwitter } from "react-icons/fi";
+import { FiInstagram } from "react-icons/fi";
 function Footer() {
   return (
     <div className="flex md:flex-row relative flex-col justify-between bg-slate-700">
       <p className=" text-slate-300 absolute top-[90%] left-4  whitespace-nowrap italic ">
-        Spain travels © 2022 all rights reserved{' '}
+        Spain travels © 2023 all rights reserved{" "}
       </p>
       <div className=" flex  md:gap-40  justify-evenly   py-10">
         <div className="flex flex-col gap-4 text-[#f7f7f7] mx-5">
@@ -20,7 +20,7 @@ function Footer() {
           </a>
         </div>
 
-        <div className="flex flex-col gap-4 text-[#f7f7f7] ">
+        <div className="useful-links flex flex-col gap-4 text-[#f7f7f7] ">
           <p className="font-bold">LEGAL</p>
 
           <a href="https://www.dropbox.com/s/gppqvrbzadad426/Politica_de_cookies.pdf?dl=1">
@@ -31,7 +31,7 @@ function Footer() {
           </a>
         </div>
 
-        <div className="flex flex-col gap-4 text-[#f7f7f7] ">
+        <div className=" social-media flex flex-col gap-4 text-[#f7f7f7] ">
           <p className="font-bold">SOCIAL</p>
 
           <div className="flex gap-4">
@@ -60,7 +60,7 @@ function Footer() {
         </div>
       </div>
 
-      <div className="flex flex-col  items-end">
+      <div className="go-top flex flex-col  items-end">
         <a href="#" className={` md:m-auto md:block hidden z-10  `}>
           <Image
             src="/st.svg"
@@ -72,8 +72,8 @@ function Footer() {
         </a>
       </div>
     </div>
-  )
+  );
   //
 }
 
-export default Footer
+export default Footer;

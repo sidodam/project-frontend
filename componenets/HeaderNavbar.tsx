@@ -1,33 +1,34 @@
-import React, { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from "react";
 
-import { AuthContext } from '../componenets/AuthContext'
+import { AuthContext } from "../componenets/AuthContext";
 
-import { AppShell, Navbar, Header, Burger } from '@mantine/core'
+import { AppShell, Navbar, Header, Burger } from "@mantine/core";
 
-import { useWindowScroll } from '@mantine/hooks'
+import { useSetState, useWindowScroll } from "@mantine/hooks";
 
-import { AiFillHome } from 'react-icons/ai'
-import { MdAccountCircle } from 'react-icons/md'
-import { BsFillPeopleFill } from 'react-icons/bs'
-import { RiCompassDiscoverFill } from 'react-icons/ri'
-import { MdPlace } from 'react-icons/md'
-import { GoSignOut } from 'react-icons/go'
-import Image from 'next/image'
-import { useMediaQuery } from '@mantine/hooks'
-import HeaderSearchBar from './HeaderSearchBar'
-import SimpleListMenu from './SimpleListMenu'
+import { AiFillHome } from "react-icons/ai";
+import { MdAccountCircle } from "react-icons/md";
+import { BsFillPeopleFill } from "react-icons/bs";
+import { RiCompassDiscoverFill } from "react-icons/ri";
+import { MdPlace } from "react-icons/md";
+import { GoSignOut } from "react-icons/go";
+import Image from "next/image";
+import { useMediaQuery } from "@mantine/hooks";
+import HeaderSearchBar from "./HeaderSearchBar";
+import SimpleListMenu from "./SimpleListMenu";
+
 export default function HeaderNavbar() {
-  const [opened, setOpened] = useState(false)
-  const [scroll, scrollTo] = useWindowScroll()
+  const [opened, setOpened] = useState(false);
+  const [scroll, scrollTo] = useWindowScroll();
 
-  const isBelow = scroll.y > 50 ? true : false
-  const tablet = useMediaQuery('(max-width: 1280px)')
-  const { user } = useContext(AuthContext) as any
+  const isBelow = scroll.y > 50 ? true : false;
+  const tablet = useMediaQuery("(max-width: 1280px)");
+  const { user } = useContext(AuthContext) as any;
 
   const signOut = () => {
-    localStorage.removeItem('user')
-    window.location.reload()
-  }
+    localStorage.removeItem("user");
+    window.location.reload();
+  };
 
   return (
     <>
@@ -46,19 +47,13 @@ export default function HeaderNavbar() {
           <Navbar
             p="md"
             className={`  w-[50%] xl:hidden     ${
-              opened
-                ? 'brbr opacity-100 block'
-                : ' opacity-0 hidden delay-500  brbr2 '
-            } ${isBelow ? '' : 'bg-transparent text-white '}  `}
+              opened ? "brbr opacity-100 block" : " opacity-0 hidden delay-500  brbr2 "
+            } ${isBelow ? "" : "bg-transparent text-white "}  `}
           >
-            <div
-              className={`flex flex-col gap-4 items-start  text-xl    ${
-                opened ? '' : 'hidden'
-              }`}
-            >
+            <div className={`flex flex-col gap-4 items-start  text-xl    ${opened ? "" : "hidden"}`}>
               {/* to hide hamb menu items    */}
 
-              <div className=" flex items-center justify-center gap-2 text-black font-semibold ">
+              <div className=" home flex items-center justify-center gap-2 text-black font-semibold ">
                 <AiFillHome />
                 <a href="/"> Home</a>
               </div>
@@ -68,7 +63,7 @@ export default function HeaderNavbar() {
                     <GoSignOut></GoSignOut>
                     <button
                       onClick={signOut}
-                      className="flex items-center justify-center text-xl gap-2 text-red-600 font-bold  "
+                      className="out flex items-center justify-center text-xl gap-2 text-red-600 font-bold  "
                     >
                       Sign out
                     </button>
@@ -76,36 +71,36 @@ export default function HeaderNavbar() {
                 </>
               ) : (
                 <>
-                  <div className=" flex items-center justify-center gap-2 text-black font-semibold ">
+                  <div className="  flex items-center justify-center gap-2 text-black font-semibold ">
                     <MdAccountCircle />
-                    <a href="/signInPage">Sign in </a>
+                    <a href="/signInPage" className="signin">
+                      Sign in{" "}
+                    </a>
                   </div>
 
                   <div className=" flex items-center justify-center gap-2 text-black font-semibold ">
                     <MdAccountCircle />
-                    <a href="/signUpPage">Register</a>
+                    <a href="/signUpPage" className="reg">
+                      Register
+                    </a>
                   </div>
                 </>
               )}
 
-              <div className=" flex items-center justify-center gap-2 text-black font-semibold ">
+              <div className=" about flex items-center justify-center gap-2 text-black font-semibold ">
                 <BsFillPeopleFill />
                 <a href="/about">About</a>
               </div>
 
-              <div className=" flex items-center justify-center gap-2 text-black font-semibold ">
+              <div className=" discover flex items-center justify-center gap-2 text-black font-semibold ">
                 <MdPlace />
                 <a href="/discover">Discover</a>
               </div>
 
-              <div className=" flex items-center justify-center gap-2 text-black font-semibold whitespace-nowrap ">
+              <div className=" contact flex items-center justify-center gap-2 text-black font-semibold whitespace-nowrap ">
                 <RiCompassDiscoverFill />
                 <a href="/contactus">Contact us</a>
               </div>
-
-         
-
-            
             </div>
           </Navbar>
         }
@@ -113,13 +108,9 @@ export default function HeaderNavbar() {
           <Header
             height={70}
             p="md"
-            className={` text-lg ${
-              isBelow ? 'bg-white' : 'bg-transparent border-0 text-black'
-            }`}
+            className={` text-lg ${isBelow ? "bg-white" : "bg-transparent border-0 text-black"}`}
           >
-            <div
-              className={`flex items-center h-[100%] justify-between overflow-hidden `}
-            >
+            <div className={`flex items-center h-[100%] justify-between overflow-hidden `}>
               <Burger
                 opened={opened}
                 onClick={() => setOpened((o) => !o)}
@@ -129,49 +120,38 @@ export default function HeaderNavbar() {
               />
 
               <a href="#" className={`mt-[2.9rem]  z-10  ml-5`}>
-                <Image
-                  src="/st.svg"
-                  alt="Spain travels"
-                  width={200}
-                  height={200}
-                  className=" h-full"
-                />
+                <Image src="/st.svg" alt="Spain travels" width={200} height={200} className=" h-full" />
               </a>
 
               <nav className=" xl:flex hidden justify-end mr-40 h-20 items-center fixed top-0 left-0 right-0">
                 <div>
                   <ul className=" flex gap-11 items-center  -mt-4 justify-between ">
-                    <li className="hover:text-[#4f47ea] transition-all  ">
+                    <li className=" home hover:text-[#4f47ea] transition-all  ">
                       <a href="/">Home</a>
                     </li>
 
-                    <li className="hover:text-[#4f47ea] transition-all  ">
+                    <li className="about hover:text-[#4f47ea] transition-all  ">
                       <a href="/about">About</a>
                     </li>
-                    <li className="hover:text-[#4f47ea] transition-all  ">
+                    <li className="discover hover:text-[#4f47ea] transition-all  ">
                       <a href="/discover">Discover</a>
                     </li>
-                    <li className="hover:text-[#4f47ea] transition-all  ">
+                    <li className="contact hover:text-[#4f47ea] transition-all  ">
                       <a href="/contactus" className=" cursor-pointer">
                         Contact us
                       </a>
                     </li>
 
-                 
-
                     <div className="flex gap-4 items-center">
                       {user ? (
                         <>
-                          <div>
-                            <SimpleListMenu
-                              name={user.username}
-                              id={user._id}
-                            ></SimpleListMenu>
+                          <div className="delete">
+                            <SimpleListMenu name={user.username} id={user._id}></SimpleListMenu>
                           </div>
 
                           <button
                             onClick={signOut}
-                            className="border px-10 py-1 transition-all fadein  bg-white font-semibold  rounded-lg hover:bg-red-600 hover:text-white"
+                            className="out border px-10 py-1 transition-all fadein  bg-white font-semibold  rounded-lg hover:bg-red-600 hover:text-white"
                           >
                             Sign out
                           </button>
@@ -181,7 +161,7 @@ export default function HeaderNavbar() {
                           <button>
                             <a
                               href="/signInPage"
-                              className=" cursor-pointer    px-10 py-1  transition-all fadein    font-semibold mt-10 rounded-lg hover:bg-red-600 hover:text-white"
+                              className=" signin cursor-pointer    px-10 py-1  transition-all fadein    font-semibold mt-10 rounded-lg hover:bg-red-600 hover:text-white"
                             >
                               Sign in
                             </a>
@@ -190,7 +170,7 @@ export default function HeaderNavbar() {
                           <button>
                             <a
                               href="/signUpPage"
-                              className=" cursor-pointer border px-10 py-1 transition-all fadein  bg-white font-semibold mt-10 rounded-lg hover:bg-red-600 hover:text-white"
+                              className="reg cursor-pointer border px-10 py-1 transition-all fadein  bg-white font-semibold mt-10 rounded-lg hover:bg-red-600 hover:text-white"
                             >
                               Register
                             </a>
@@ -205,11 +185,7 @@ export default function HeaderNavbar() {
           </Header>
         }
       >
-        <div
-          className={`${
-            !isBelow && opened && tablet ? 'blur-md transition-all ' : ''
-          }   `}
-        >
+        <div className={`${!isBelow && opened && tablet ? "blur-md transition-all " : ""}   `}>
           <div
             className={`flex   gap-2   md:flex-row flex-col  md:mx-10 xl:justify-around    justify-between md:my-10`}
           >
@@ -221,12 +197,7 @@ export default function HeaderNavbar() {
               </div>
             </div>
 
-            <Image
-              src="/womanbag.svg"
-              alt="Spain travels"
-              width={400}
-              height={400}
-            />
+            <Image src="/womanbag.svg" alt="Spain travels" width={400} height={400} />
           </div>
         </div>
 
@@ -236,5 +207,5 @@ export default function HeaderNavbar() {
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, error.</p></div> */}
       </AppShell>
     </>
-  )
+  );
 }

@@ -1,79 +1,77 @@
 // @ts-nocheck
-import Navigator from './Navigator'
-import { useState, useRef, useEffect } from 'react'
-import { DateRange } from 'react-date-range'
-import 'react-date-range/dist/styles.css' // main css file
-import 'react-date-range/dist/theme/default.css' // theme css file
-import { format } from 'date-fns'
-import SearchItem from '../componenets/SearchItem'
-import useFetch from '../componenets/hooks/useFetch'
-import Loader from '../componenets/Loader'
-import { searchState } from '../componenets/searchState'
-import { useRecoilState } from 'recoil'
+import Navigator from "./Navigator";
+import { useState, useRef, useEffect } from "react";
+import { DateRange } from "react-date-range";
+import "react-date-range/dist/styles.css"; // main css file
+import "react-date-range/dist/theme/default.css"; // theme css file
+import { format } from "date-fns";
+import SearchItem from "../componenets/SearchItem";
+import useFetch from "../componenets/hooks/useFetch";
+import Loader from "../componenets/Loader";
+import { searchState } from "../componenets/searchState";
+import { useRecoilState } from "recoil";
 
 interface ListProps {
-  destination: any
-  startDate: any
-  endDate: any
-  adult: any
-  room: any
+  destination: any;
+  startDate: any;
+  endDate: any;
+  adult: any;
+  room: any;
 }
 
 function List({ destination, startDate, endDate, adult, room }: ListProps) {
-  const [min, setMin] = useState(0)
-  const [max, setMax] = useState(0)
-  const [dest, setDest] = useState(destination)
-  const [roomNumber, setRoomNumber] = useState(room)
-  const [adultNumber, setAdultNumber] = useState(adult)
-  const [searchclicked, setSearchClick] = useState(true)
+  const [min, setMin] = useState(0);
+  const [max, setMax] = useState(0);
+  const [dest, setDest] = useState(destination);
+  const [roomNumber, setRoomNumber] = useState(room);
+  const [adultNumber, setAdultNumber] = useState(adult);
+  const [searchclicked, setSearchClick] = useState(true);
 
-  const ref = useRef(null)
+  const ref = useRef(null);
 
   const { data, loading, error, reFetch } = useFetch(
-    `https://weak-lime-sea-urchin-cap.cyclic.app/api/hotels?city=${dest}&min=${min || 0}&max=${
+    `https://weak-lime-sea-urchin-cap.cyclic.app/api/hotels?city=${dest?.toLowerCase()}&min=${min || 0}&max=${
       max || 9999
-    }`,
-  ) as { data: any[]; loading: boolean; error: boolean; reFetch: () => void }
-  const [openDate, setOpenDate] = useState(false)
+    }`
+  ) as { data: any[]; loading: boolean; error: boolean; reFetch: () => void };
+
+  const [openDate, setOpenDate] = useState(false);
 
   const [date2, setDate] = useState([
     {
       startDate: new Date(),
       endDate: new Date().setDate(new Date().getDate() + 1),
-      key: 'selection',
+      key: "selection",
     },
-  ])
+  ]);
 
   const handleClick = () => {
-    setSearchClick(false)
-    setOpenDate(!openDate)
+    setSearchClick(false);
+    setOpenDate(!openDate);
 
-    let element = document.getElementById('activeDate')
+    let element = document.getElementById("activeDate");
 
     if (element)
-      element.innerHTML = `${format(
-        date2[0].startDate,
-        'MM/dd/yyyy',
-      )} to ${format(date2[0].endDate, 'MM/dd/yyyy')} `
-  }
+      element.innerHTML = `${format(date2[0].startDate, "MM/dd/yyyy")} to ${format(date2[0].endDate, "MM/dd/yyyy")} `;
+  };
 
   const handleSearchClick = () => {
-    setSearchClick(true)
-    let el = document.getElementById('activeDate')
+    setSearchClick(true);
+    let el = document.getElementById("activeDate");
     setObj({
       destination: dest,
-      startDate: el?.innerHTML.split('to')[0].trim(),
-      endDate: el?.innerHTML.split('to')[1].trim(),
+      startDate: el?.innerHTML.split("to")[0].trim(),
+      endDate: el?.innerHTML.split("to")[1].trim(),
       room: roomNumber,
       adult: adultNumber,
-    })
+    });
 
-    reFetch()
-  }
+    reFetch();
+  };
 
-  const [obj, setObj] = useRecoilState(searchState)
+  const [obj, setObj] = useRecoilState(searchState);
 
-  console.log(searchclicked)
+  console.log(searchclicked);
 
   return (
     <div>
@@ -97,11 +95,7 @@ function List({ destination, startDate, endDate, adult, room }: ListProps) {
 
               <div className="flex flex-col ">
                 <label className="mt-2 mb-1">Check-in Date</label>
-                <span
-                  className="pl-1 bg-white cursor-pointer rounded-sm"
-                  id="activeDate"
-                  onClick={handleClick}
-                >
+                <span className="pl-1 bg-white cursor-pointer rounded-sm" id="activeDate" onClick={handleClick}>
                   {` ${
                     startDate != undefined && endDate != undefined
                       ? `${startDate} to ${endDate}`
@@ -109,10 +103,7 @@ function List({ destination, startDate, endDate, adult, room }: ListProps) {
         
         
         
-        ${format(date2[0].startDate, 'MM/dd/yyyy')} to ${format(
-                          date2[0].endDate,
-                          'MM/dd/yyyy',
-                        )}
+        ${format(date2[0].startDate, "MM/dd/yyyy")} to ${format(date2[0].endDate, "MM/dd/yyyy")}
         
         `
                   } `}
@@ -130,9 +121,7 @@ function List({ destination, startDate, endDate, adult, room }: ListProps) {
                   </div>
                 )}
 
-                <label className=" mt-5 mb-4  text-lg font-semibold">
-                  Options
-                </label>
+                <label className=" mt-5 mb-4  text-lg font-semibold">Options</label>
 
                 <div className="flex flex-col md:grid md:grid-cols-2 gap-4 ">
                   <div className="flex justify-between">
@@ -183,18 +172,11 @@ function List({ destination, startDate, endDate, adult, room }: ListProps) {
                     />
                   </div>
 
-                  <button
-                    onClick={handleSearchClick}
-                    className="bg-blue-500 md:hidden block  rounded-md"
-                    ref={ref}
-                  >
+                  <button onClick={handleSearchClick} className="bg-blue-500 md:hidden block  rounded-md" ref={ref}>
                     Search
                   </button>
                 </div>
-                <button
-                  onClick={handleSearchClick}
-                  className="bg-blue-500 mt-5 mx-5 py-2 md:block hidden rounded-md"
-                >
+                <button onClick={handleSearchClick} className="bg-blue-500 mt-5 mx-5 py-2 md:block hidden rounded-md">
                   Search
                 </button>
               </div>
@@ -212,18 +194,14 @@ function List({ destination, startDate, endDate, adult, room }: ListProps) {
           ) : (
             <>
               {data.map((item: any) => (
-                <SearchItem
-                  key={item._id}
-                  item={item}
-                  searchclicked={searchclicked}
-                />
+                <SearchItem key={item._id} item={item} searchclicked={searchclicked} />
               ))}
             </>
           )}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default List
+export default List;

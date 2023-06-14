@@ -1,9 +1,9 @@
-import React from 'react'
-import ContactForm from '../componenets/ContactForm'
-import Navigator from '../componenets/Navigator'
-import MailList from '../componenets/MailList'
-import Footer from '../componenets/Footer'
-import { motion } from 'framer-motion'
+import React from "react";
+import ContactForm from "../componenets/ContactForm";
+import Navigator from "../componenets/Navigator";
+import MailList from "../componenets/MailList";
+import Footer from "../componenets/Footer";
+import { motion } from "framer-motion";
 
 function FadeInWhenVisible({ children }: any) {
   return (
@@ -19,7 +19,7 @@ function FadeInWhenVisible({ children }: any) {
     >
       {children}
     </motion.div>
-  )
+  );
 }
 
 function Contactus() {
@@ -45,10 +45,8 @@ function Contactus() {
       </div>
 
       <Footer></Footer>
-
-      {/* <Hotel></Hotel> */}
     </div>
-  )
+  );
 }
 
-export default Contactus
+export default Contactus;
