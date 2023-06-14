@@ -226,7 +226,7 @@ const Home: NextPage = () => {
             <p className="text-[2rem] font-bold">What travellers say about us?</p>
 
             <p className="mb-10">
-              Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem.
+              Had a great time ? tell us about it!
             </p>
           </div>
 
