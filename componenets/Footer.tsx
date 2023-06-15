@@ -38,21 +38,21 @@ function Footer() {
             <a
               target="_blank"
               rel="noreferrer"
-              href="https://www.facebook.com/profile.php?id=100082140622579"
+              href="https://www.facebook.com/"
             >
               <FiFacebook />
             </a>
             <a
               target="_blank"
               rel="noreferrer"
-              href="https://mobile.twitter.com/travels_spain"
+              href="https://mobile.twitter.com/"
             >
               <FiTwitter />
             </a>
             <a
               target="_blank"
               rel="noreferrer"
-              href="https://www.instagram.com/spaintravels96/"
+              href="https://www.instagram.com/"
             >
               <FiInstagram />
             </a>
